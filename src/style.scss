@@ -1,0 +1,31 @@
+*, *::after, *::before{
+    margin: 0rem;
+    padding: 0rem;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    min-height: 100vh;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: 0px;
+    scrollbar-track-color: transparent;
+    &::-webkit-scrollbar{
+        height: 0px;
+        width: 0px;
+    }
+    &::-webkit-scrollbar-track{
+        height: 0px;
+        width: 0px;
+        color: transparent;
+        background-color: transparent;
+    }
+}
+#root{
+    padding: 3rem 4rem;
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #00aaff, #00ff6c);
+}
