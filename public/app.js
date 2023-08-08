@@ -79,6 +79,17 @@ function dispatch(state, { type, payload }) {
             };
     }
 }
+// Yet to be used functions
+const INTEGER_FORMATTER = new Intl.NumberFormat('en-us', {
+    maximumFractionDigits: 0
+});
+function formatOperand(operand) {
+    if (operand == null) return;
+    const [integer, decimal] = operand.split('.');
+    if (decimal == null) return INTEGER_FORMATTER.format(integer);
+    return `${INTEGER_FORMATTER.format(integer)}.${decimal}`;
+}
+// above functions yet to be used
 function evaluate({ currOp, prevOp, Oper }) {
     const prev = parseFloat(prevOp);
     const current = parseFloat(currOp);
@@ -121,49 +132,49 @@ export default function App() {
                 type: actions.delDigit
             })
     }, "DEL"), /*#__PURE__*/ React.createElement(OperationDigit, {
-        operation: "\xf7",
+        Oper: "\xf7",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(Digit, {
-        payload: "1",
+        digit: "1",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(Digit, {
-        payload: "2",
+        digit: "2",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(Digit, {
-        payload: "3",
+        digit: "3",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(OperationDigit, {
-        operation: "*",
+        Oper: "*",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(Digit, {
-        payload: "4",
+        digit: "4",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(Digit, {
-        payload: "5",
+        digit: "5",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(Digit, {
-        payload: "6",
+        digit: "6",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(OperationDigit, {
-        operation: "+",
+        Oper: "+",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(Digit, {
-        payload: "7",
+        digit: "7",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(Digit, {
-        payload: "8",
+        digit: "8",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(Digit, {
-        payload: "9",
+        digit: "9",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(OperationDigit, {
-        operation: "-",
+        Oper: "-",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(Digit, {
-        payload: ".",
+        digit: ".",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(Digit, {
-        payload: "0",
+        digit: "0",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement("button", {
         className: "span-two-cols",

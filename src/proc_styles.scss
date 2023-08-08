@@ -3,7 +3,7 @@
   display: grid;
   gap: 0px;
   grid-template-columns: repeat(4, 6rem);
-  grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+  grid-template-rows: minmax(8rem, auto) repeat(5, 6rem);
   *{
     transition: all 0.3s ease;
   }

@@ -65,6 +65,17 @@ function dispatch(state, { type, payload }) {
       };
   }
 }
+//Yet to be used functions
+const INTEGER_FORMATTER = new Intl.NumberFormat("en-us", {
+  maximumFractionDigits: 0,
+})
+function formatOperand(operand) {
+  if (operand == null) return
+  const [integer, decimal] = operand.split(".")
+  if (decimal == null) return INTEGER_FORMATTER.format(integer)
+  return `${INTEGER_FORMATTER.format(integer)}.${decimal}`
+}
+//above functions yet to be used
 function evaluate({ currOp, prevOp, Oper }) {
   const prev = parseFloat(prevOp);
   const current = parseFloat(currOp);
@@ -100,21 +111,21 @@ export default function App() {
       </div>
       <button className="span-two-cols" onClick={()=>updater({type:actions.cls})}>AC</button>
       <button onClick={()=>updater({type:actions.delDigit})}>DEL</button>
-      <OperationDigit operation="÷" dispatch={updater} />
-      <Digit payload="1" dispatch={updater} />
-      <Digit payload="2" dispatch={updater} />
-      <Digit payload="3" dispatch={updater} />
-      <OperationDigit operation="*" dispatch={updater} />
-      <Digit payload="4" dispatch={updater} />
-      <Digit payload="5" dispatch={updater} />
-      <Digit payload="6" dispatch={updater} />
-      <OperationDigit operation="+" dispatch={updater} />
-      <Digit payload="7" dispatch={updater} />
-      <Digit payload="8" dispatch={updater} />
-      <Digit payload="9" dispatch={updater} />
-      <OperationDigit operation="-" dispatch={updater} />
-      <Digit payload="." dispatch={updater} />
-      <Digit payload="0" dispatch={updater} />
+      <OperationDigit Oper="÷" dispatch={updater} />
+      <Digit digit="1" dispatch={updater} />
+      <Digit digit="2" dispatch={updater} />
+      <Digit digit="3" dispatch={updater} />
+      <OperationDigit Oper="*" dispatch={updater} />
+      <Digit digit="4" dispatch={updater} />
+      <Digit digit="5" dispatch={updater} />
+      <Digit digit="6" dispatch={updater} />
+      <OperationDigit Oper="+" dispatch={updater} />
+      <Digit digit="7" dispatch={updater} />
+      <Digit digit="8" dispatch={updater} />
+      <Digit digit="9" dispatch={updater} />
+      <OperationDigit Oper="-" dispatch={updater} />
+      <Digit digit="." dispatch={updater} />
+      <Digit digit="0" dispatch={updater} />
       <button className="span-two-cols" onClick={()=>updater({type: actions.eval})}>=</button>
     </div>
   );
