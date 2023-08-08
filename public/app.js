@@ -79,6 +79,27 @@ function dispatch(state, { type, payload }) {
             };
     }
 }
+function evaluate({ currOp, prevOp, Oper }) {
+    const prev = parseFloat(prevOp);
+    const current = parseFloat(currOp);
+    if (isNaN(prev) || isNaN(current)) return '';
+    let computation = '';
+    switch(Oper){
+        case '+':
+            computation = prev + current;
+            break;
+        case '-':
+            computation = prev - current;
+            break;
+        case '*':
+            computation = prev * current;
+            break;
+        case '÷':
+            computation = prev / current;
+            break;
+    }
+    return computation.toString();
+}
 export default function App() {
     const [{ currOp, prevOp, Oper }, updater] = useReducer(dispatch, {});
     return /*#__PURE__*/ React.createElement("div", {
@@ -91,8 +112,15 @@ export default function App() {
     }, /*#__PURE__*/ React.createElement("p", null, prevOp, " ", Oper)), /*#__PURE__*/ React.createElement("div", {
         className: "current-eqn"
     }, currOp)), /*#__PURE__*/ React.createElement("button", {
-        className: "span-two-cols"
-    }, "AC"), /*#__PURE__*/ React.createElement("button", null, "DEL"), /*#__PURE__*/ React.createElement(OperationDigit, {
+        className: "span-two-cols",
+        onClick: ()=>updater({
+                type: actions.cls
+            })
+    }, "AC"), /*#__PURE__*/ React.createElement("button", {
+        onClick: ()=>updater({
+                type: actions.delDigit
+            })
+    }, "DEL"), /*#__PURE__*/ React.createElement(OperationDigit, {
         operation: "\xf7",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement(Digit, {
@@ -138,6 +166,9 @@ export default function App() {
         payload: "0",
         dispatch: updater
     }), /*#__PURE__*/ React.createElement("button", {
-        className: "span-two-cols"
+        className: "span-two-cols",
+        onClick: ()=>updater({
+                type: actions.eval
+            })
     }, "="));
 }
