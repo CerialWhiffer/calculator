@@ -123,11 +123,11 @@ GulpClient.task("watch:js", ()=>{
 
 
 GulpClient.task("build:all", async function(){
-    GulpClient.parallel("build:css", "build:js")();
+    GulpClient.parallel(buildCSS, buildJS)();
     console.info("Building source files complete!");
 });
 GulpClient.task("watch:all", async function(){
     console.info("Watching for all source file changes!");
-    GulpClient.parallel("build:css", "build:js")();
-    GulpClient.watch(["./src/**/*.{cjs,mjs,js,jsx}", "./src/*.{html,htm}", "./src/**/*.{css,scss}"], GulpClient.parallel("watch:js", "watch:css"));
+    GulpClient.parallel(buildCSS, buildJS)();
+    GulpClient.watch(["./src/**/*.{cjs,mjs,js,jsx}", "./src/*.{html,htm}", "./src/**/*.{css,scss}"], GulpClient.parallel(buildCSS, buildJS));
 });

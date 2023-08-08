@@ -1,16 +1,21 @@
 .calc-body {
+  border: white 2px solid;
   display: grid;
+  gap: 0px;
   grid-template-columns: repeat(4, 6rem);
   grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+  *{
+    transition: all 0.3s ease;
+  }
 }
 button {
   font-size: 2.5rem;
   text-align: center;
   vertical-align: middle;
   outline: none;
-  border: rgb(143, 143, 143) solid 2px;
+  border: white solid 2px;
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.7);
   &:hover,
   &:focus {
     background-color: white;
@@ -24,9 +29,11 @@ button {
   justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
-  grid-column: 1 / -1;
+  grid-column-start: 1;
+  grid-column-end: -1;
   padding: 0.5rem;
   background: rgba(0, 0, 0, 0.8);
+  border: solid 2px white;
 }
 .total-eqn,
 .current-eqn {
@@ -34,29 +41,33 @@ button {
   width: 100%;
   margin: 0.25rem 0.5rem;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
   font-family: Georgia, "Times New Roman", Times, serif;
   color: white;
   scroll-behavior: smooth;
   scrollbar-width: 0px;
+  justify-content: flex-end;
+  align-items: center;
   scrollbar-track-color: transparent;
+  p::-webkit-scrollbar-track,
   &::-webkit-scrollbar-track{
     background-color: transparent;
     width: 0px;
     height: 0px;
   }
+  p::-webkit-scrollbar,
   &::-webkit-scrollbar{
     width: 0px;
     height: 0px;
   }
 }
 .total-eqn {
-  color: bisque;
-  overflow-x: scroll;
-  overflow-y: hidden;
   height: 40%;
-  font-size: 3rem;
+  & p{
+    color: bisque;
+    overflow: scroll;
+    font-size: 3rem;
+    background-color: transparent;
+  }
 }
 .current-eqn {
   font-size: 3.3rem;
