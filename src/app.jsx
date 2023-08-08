@@ -1,5 +1,8 @@
 import React, { useReducer } from "react";
 import "./proc_styles.css";
+import Digit from "./Digits";
+import OperationDigit from "./Operation";
+
 function horizontalScroll(event) {
   const delta = Math.max(
     -1,
@@ -77,21 +80,21 @@ export default function App() {
       </div>
       <button className="span-two-cols">AC</button>
       <button>DEL</button>
-      <button>÷</button>
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>*</button>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>+</button>
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button>-</button>
-      <button>.</button>
-      <button>0</button>
+      <OperationDigit operation="÷" dispatch={updater}/>
+      <Digit payload="1" dispatch={updater}/>
+      <Digit payload="2" dispatch={updater}/>
+      <Digit payload="3" dispatch={updater}/>
+      <OperationDigit operation="*" dispatch={updater}/>
+      <Digit payload="4" dispatch={updater}/>
+      <Digit payload="5" dispatch={updater}/>
+      <Digit payload="6" dispatch={updater}/>
+      <OperationDigit operation="+" dispatch={updater}/>
+      <Digit payload="7" dispatch={updater}/>
+      <Digit payload="8" dispatch={updater}/>
+      <Digit payload="9" dispatch={updater}/>
+      <OperationDigit operation="-" dispatch={updater}/>
+      <Digit payload="." dispatch={updater}/>
+      <Digit payload="0" dispatch={updater}/>
       <button className="span-two-cols">=</button>
     </div>
   );
